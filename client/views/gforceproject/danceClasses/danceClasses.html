@@ -1,0 +1,97 @@
+<div class="well page " style="padding-bottom:200px;">
+
+    <div class="page-header">
+        <h3>Dance Classes</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="nav nav-boxed nav-justified ">
+                <li  >
+                    <a href="" ng-click="vm.selectBatch('batch-1')"><i class="color-success fa fa-list "></i>
+                    Batch 1 (May 4 - 8, 2015)</a>
+                </li>
+            </ul            <br>
+            <div class="list-group">
+                <div class="panel-body ui-map " data-slim-scroll data-scroll-height="600px">
+                    <div data-ng-repeat="class in vm.danceClasses | where:{category:'Manila Batch 1'} ">
+                        <div class="list-group-item withripple" data-ng-click="vm.open(class)" >
+                            <div class="row-picture">
+                                <img class="circle" ng-src="images/teachers/teachers_{{class.teacher.profile_pic}}.jpg" alt="icon">
+                            </div>
+                            <div class="row-content ">
+                                <h4 class="list-group-item-heading">{{class.dancestyle.name}} with {{class.teacher.name}}</h4>
+                                <p class="list-group-item-text">{{class.description}}</p>
+                            </div>
+                        </div>
+                        <div class="list-group-separator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <ul class="nav nav-boxed nav-justified ">
+                <li >
+                    <a href=""><i class="color-warning fa fa-list"></i>
+                    Batch 2 (May 11 - 14, 2015)</a>
+                </li>
+            </ul>
+            <br>
+            <div class="list-group">
+                <div class="panel-body ui-map " data-slim-scroll data-scroll-height="600px">
+                    <div data-ng-repeat="class in vm.danceClasses | where:{category:'Manila Batch 2'}">
+                        <div class="list-group-item withripple" data-ng-click="vm.open(class)" >
+                            <div class="row-picture">
+                                <img class="circle" ng-src="images/teachers/teachers_{{class.teacher.profile_pic}}.jpg" alt="icon">
+                            </div>
+                            <div class="row-content ">
+                                <h4 class="list-group-item-heading">{{class.dancestyle.name}} with {{class.teacher.name}}</h4>
+                                <p class="list-group-item-text">{{class.description}}</p>
+                            </div>
+                        </div>
+                        <div class="list-group-separator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+<div>
+    <script type="text/ng-template" id="classModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Manila Batch 1</h3>
+        </div>
+        <div class="modal-body clearfix" >
+            <div>
+                <img alt="" class="pull-left" src="images/teachers/teachers_{{vmt.selectedClass.teacher.profile_pic}}.jpg" width="300" style="margin-right:60px;">
+                <div class="caption">
+                    <h3>{{vmt.selectedClass.dancestyle.name}} with {{vmt.selectedClass.teacher.name}}</h3>
+                    <br>
+                    <h4>{{vmt.selectedClass.category}}</h4>
+                    <p>{{vmt.selectedClass.date}}</p>
+                    <p>{{vmt.selectedClass.time}}</p>
+                    <br>
+                    <p>{{vmt.selectedClass.description}}</p>
+                    <youtube-video
+                        video-id="vmt.classVid.video" player="vmt.classVid.player"
+                        player-vars="vmt.classVid.vars" class="col-lg-7">
+                    </youtube-video>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="vmt.ok()">Enroll this Class</button>
+            <button class="btn btn-warning" ng-click="vmt.dismiss()">back</button>
+        </div>
+    </script>
+</div>
+
+<script>
+    $(function() {
+        $.material.ripples();
+    });
+</script>

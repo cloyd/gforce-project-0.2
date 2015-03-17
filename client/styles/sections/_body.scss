@@ -1,0 +1,141 @@
+body {
+    background: url('../images/bg-pattern/bg-pattern7.png') repeat #fff;
+}
+#header2{
+    display: none;
+}
+
+
+// fullscreen, hide header and sidebar
+.body-wide {
+    #header,
+    #nav-container {
+        display: none;
+    }
+
+    > .main-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    #content {
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        // bottom: 0;
+        margin: 0 !important; // fix nav-off-canvas override margin cause #content not centered issue
+        background-color: $main_container_bg;
+    }
+
+    // hide intro
+    .introjs-overlay,
+    .introjs-helperLayer {
+        display: none;
+    }
+}
+
+
+// fullscreen, with header
+.body-wide-w-header {
+    // overflow: auto;
+    #header,#nav-container {
+        display: none;
+    }
+    #header2{
+        height: 174px;
+        z-index: 1;
+        display: inherit;
+        position: fixed;
+        width: 100%;
+    }
+    // section.header-fixed{
+    //     position: fixed;
+    //     right: 0;
+    //     left: 0;
+    //     z-index: 1;
+    // }
+    .navbar-brand
+    {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+        margin: auto;
+    }
+    a.navbar-brand{
+        padding-top:30px;
+    }
+
+    > .main-container {
+        width: 100%;
+        margin: 0 !important;
+        padding: 0;
+        >.content-container{
+            min-height: initial;
+            overflow: initial;
+        }
+    }
+
+
+    #content {
+        // overflow: hidden;
+        z-index: 100;
+        // position: absolute;
+        position: fixed;
+        // margin: 0 !important; // fix nav-off-canvas override margin cause #content not centered issue
+        margin:90px 200px 200px 200px;
+
+    }
+    .page{
+        // overflow: auto;
+        // z-index: 10;
+        // position:absolute;
+        // top:70px;
+        // left: 0;
+        // right: 0;
+        // margin:0 200px 200px 200px
+        margin: 0px;
+        padding:15px 60px 80px;
+        overflow: hidden;
+    }
+    .modal-content{
+        padding:20px 40px 50px;
+    }
+
+    // hide intro
+    .introjs-overlay,
+    .introjs-helperLayer {
+        display: none;
+    }
+
+
+    .modal-lg{
+        width:1200px;
+    }
+    .btn.btn-fab i{
+        top:-3px;
+    }
+    .paddingtop20{
+        padding-top: 20px;
+    }
+    .list-group .list-group-item .row-picture{
+        padding-right:26px;
+    }
+    label.glamping{
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .list-group{
+        margin-bottom: -150px;
+    }
+    // timeline/schedule - summary page
+    .ui-timline-container.ui-timline-left{
+        padding-left:20px;
+    }
+}

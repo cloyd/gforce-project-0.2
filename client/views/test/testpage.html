@@ -1,0 +1,56 @@
+
+<div class="well page" style="height:700px;" >
+    <div class="row" >
+        <div class="col-md-12">
+            <ui-select multiple ng-model="vm.danceClassList.id" ng-disabled="disabled" style="width: 500px;">
+                <ui-select-match placeholder="Select Class ...">class ID:{{$item.id}}</ui-select-match>
+                <ui-select-choices repeat="class in vm.danceClassList | filter:$select.search">
+                  {{class.title}}
+                </ui-select-choices>
+            </ui-select>
+           <!--  <p>Selected: {{multipleDemo.colors}}</p> -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Simple Tabs</h3>
+            <tabset class="ui-tab">
+                <tab heading="Static title" >
+                    Static content here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, quidem, officiis, et ex laudantium sed cupiditate voluptatum libero nobis sit illum voluptates beatae ab. Ad, repellendus non sequi et at.
+                </tab>
+                <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+                   <h4>{{tab.title}}</h4>
+                   <p>{{tab.content}}</p>
+                </tab>
+            </tabset>
+
+            <div class="checkbox checkbox-primary">
+                <label>
+                  <input type="checkbox" checked="">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div ng-controller="ModalDemoCtrl">
+        <script type="text/ng-template" id="terms-and-.html">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Im a modal!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed o eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor lorem black ad</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok()">I Agree</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </script>
+</div>
+    </div>
+</div>
+
+<script> $(function() {$.material.init();});
+</script>

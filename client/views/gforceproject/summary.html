@@ -1,0 +1,183 @@
+<div class="well page" >
+    <div class="page-header">
+        <h3>Summary</h3>
+    </div>
+    <div class="row" >
+        <div class="col-lg-6">
+            <p></p>
+            <img src="images/poster/poster-size_1170x170.jpg" alt="" class="img-responsive">
+                 <!-- profile panel -->
+           <!--  <div class="panel panel-profile panel-material-blue-600">
+                <div class="panel-heading text-center">
+                    <h3>Welcome John Doe!</h3>
+
+                </div>
+            </div> -->
+            <!-- end profile panel -->
+
+             <!-- Meida -->
+            <div class="panel panel-info" >
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Student Info</strong></div>
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-body">
+                            <ul class="list-unstyled list-info">
+                                <li>
+                                    <span class="icon glyphicon glyphicon-user"></span>
+                                     <label>First Name</label>
+                                    <a href="#" editable-text="vm.formData.firstname">{{ vm.formData.firstname || "John Doe" }}</a>
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-user"></span>
+                                    <label>Last Name</label>
+                                    <a href="#" editable-text="vm.formData.lastname">{{ vm.formData.lastname || "John Doe" }}</a>
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-envelope"></span>
+                                    <label>Email</label>
+                                    <a href="#" editable-text="vm.formData.email">{{ vm.formData.email || "" }}</a>
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-home"></span>
+                                    <label>Address</label>
+                                    <a href="#" editable-text="vm.formData.address">{{ vm.formData.address || "" }}</a>
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-earphone"></span>
+                                    <label>Contact</label>
+                                    <a href="#" editable-text="vm.formData.cnumber">{{ vm.formData.cnumber || "" }}</a>
+                                </li>
+                                 <li>
+                                    <span class="icon glyphicon glyphicon-gender"></span>
+                                    <label>Gender</label>
+                                    <a href="#" editable-text="vm.formData.cnumber">{{ vm.formData.cnumber || "" }}</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end Media -->
+            <a ui-sref="gforceproject-thankyou"><button class="btn btn-primary btn-raised">Submit</button></a>
+
+        </div>
+        <div class="col-lg-6">
+
+            <div class="ui-timline-container ui-timline-left" data-slim-scroll data-scroll-height="500px">
+                <section class="ui-timeline">
+                    <article class="tl-item">
+                        <div class="tl-body">
+                            <div class="tl-entry">
+                                <div class="tl-caption">
+                                    <a href="" class="btn btn-info btn-block">Schedule</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="tl-item">
+                        <div class="tl-body">
+                            <div class="tl-entry">
+                               <!--  <div class="tl-time">3 min ago</div> -->
+                                <div class="tl-icon btn-icon btn-icon-round bg-info"><i class="fa fa-asterisk"></i></div>
+                                <div class="tl-content">
+                                    <h4 class="tl-tile text-primary">Batch 1 : April 13 - 17, 2015</h4>
+                                    <div class="col-lg-8">
+                                        <div class="media">
+                                            <a class="pull-left" href="">
+                                                <img alt="" src="images/teachers/teachers_myka.jpg" class="img-rounded img64_64">
+                                            </a>
+
+                                            <div class="media-body">
+                                                <br>
+                                                <h4 class="media-heading">Kids Class (5-7) with Myka</h4>
+                                                <p>10:30 - 12:00 PM <br/>
+                                                April 1 - 5, 2015</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                          <button class="btn btn-default"><i class="mdi-navigation-close"></i> Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tl-item">
+                        <div class="tl-body">
+                            <div class="tl-entry">
+                                <div class="tl-icon btn-icon btn-icon-round bg-warning"><i class="fa fa-asterisk"></i></div>
+                                <div class="tl-content">
+                                    <h4 class="tl-tile text-danger">Batch 2 : May 4 - 8, 2015</h4>
+
+                                    <div class="col-lg-8">
+                                        <div class="media">
+                                            <a class="pull-left" href="javascript:;">
+                                                <img alt="" src="images/teachers/teachers_ishii.jpg" class="img-rounded img64_64">
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">Advanced Kids Class with Ishii</h4>
+                                                <p>12:00 - 2:00 PM <br/>
+                                                April 5 - 10, 2015</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="col-lg-2">
+                                          <button class="btn btn-default"><i class="mdi-navigation-close"></i> Remove</button>
+                                    </div>
+
+                                    <!-- next row -->
+                                    <div class="col-lg-8">
+                                        <div class="media">
+                                            <a class="pull-left" href="javascript:;">
+                                                <img alt="" src="images/teachers/teachers_poppers.jpg" class="img-rounded img64_64">
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">Hip-Hop with G-Force Poppers</h4>
+                                                <p>2:00 - 4:00 PM <br/>
+                                                April 5 - 10, 2015</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                      <div class="col-lg-2">
+                                          <button class="btn btn-default"><i class="mdi-navigation-close"></i> Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tl-item" data-ng-show="vm.formData.glamping">
+                        <div class="tl-body">
+                            <div class="tl-entry">
+                                <div class="tl-icon btn-icon btn-icon-round bg-success"><i class="fa fa-location-arrow"></i></div>
+                                <div class="tl-content">
+                                    <h4 class="tl-tile text-warning">Glamping</h4>
+                                    <p>April 10 - 13, 2015</p>
+                                    <p>Incidunt, molestias odio soluta nihil accusantium sit nostrum doloremque. Recusandae, ullam, odio consequatur facere totam reiciendis similique dicta explicabo!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tl-item">
+                        <div class="tl-body">
+                            <div class="tl-entry">
+
+                                <div class="tl-icon btn-icon btn-icon-round bg-primary"><i class="fa fa-flag"></i></div>
+                                <div class="tl-content">
+                                    <h4 class="tl-tile text-info">The Recital</h4>
+                                    <p>May 30, 2015</p>
+                                    <p>Dcimus, perferendis nulla magni sequi cumque nisi eum praesentium omnis voluptas id molestias adipisci accusamus nobis totam. Odit, hic suscipit necessitatibus quos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

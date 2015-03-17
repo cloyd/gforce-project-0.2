@@ -1,0 +1,36 @@
+<div class="well page ">
+      <!-- Datepicker -->
+
+            <div class="row" data-ng-controller="DatePickerCtrl as vm" style="height:500px;">
+                <div class="col-sm-4">
+
+                    <div class="input-group ui-datepicker">
+                        <input type="text"
+                               class="form-control"
+                               datepicker-popup="{{vm.format}}"
+                               ng-model="vm.dt"
+                               is-open="vm.opened"
+                               min="vm.minDate"
+                               max="'1/1/15'"
+                               datepicker-options="vm.dateOptions"
+                               ng-required="true"
+                               close-text="Close">
+                        <span class="input-group-addon" ng-click="vm.open($event)"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <div class="callout callout-info">
+                        <p>Date is: {{vm.dt | date:'fullDate'}}</p>
+                    </div>
+                </div>
+            </div>
+
+    <!-- end Datepicker -->
+
+</div>
+
+
+<script> $(function() {
+    $.material.init();
+    // $(".select").dropdown({ "autoinit" : ".select" });
+
+     });
+</script>

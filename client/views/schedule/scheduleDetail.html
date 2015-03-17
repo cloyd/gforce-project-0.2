@@ -1,0 +1,13 @@
+<div data-ng-repeat="danceClass in vm.danceClassList | where:{batch:svm.batch}">
+    <div class="list-group-item withripple" ng-click="vm.test(danceClass.id)">
+        <div class="row-picture">
+            <img clas="circle" src="http://lorempixel.com/g/56/56/people/{{danceClass.id}}" alt="icon">
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">{{danceClass.title}}</h4>
+            <p class="list-group-item-text">1:30 - 2:30 PM</p>
+            <p class="list-group-item-text">{{danceClass.batch}}</p>
+        </div>
+    </div>
+    <div class="list-group-separator"></div>
+</div>

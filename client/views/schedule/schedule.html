@@ -1,0 +1,35 @@
+
+<div class="well page ">
+    <div class="page-header">
+        <h3>Schedule</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-boxed nav-justified ">
+                <li class="withripple" >
+                    <a href="#/schedule/detail/batch-1"><i class="color-success fa fa-list "></i> Batch 1</a>
+                </li>
+                <li class="withripple">
+                    <a href="#/schedule/detail/batch-2"><i class="color-warning fa fa-list"></i> Batch 2</a>
+                </li>
+               <!--  <li class="withripple">
+                    <a href="#/schedule/detail/regional"><i class="color-danger fa fa-plane"></i> Regional</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="list-group">
+                <div class="panel-body ui-map " data-slim-scroll data-scroll-height="540px">
+                    <div ui-view></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script> $(function() {$.material.init();});
+</script>

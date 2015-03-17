@@ -1,0 +1,142 @@
+
+// Shared variables and mixins
+@import
+    "global/var"                        // global variables
+,   "bootstrap/bootstrap/mixins"        // Bootstrap mixins
+,   "bourbon/bourbon"                   // mixins
+;
+
+
+@import
+    // Plugins, overrides plugins' style
+    "plugins/bootstrap-slider"
+,   "plugins/responsive-tables"
+,   "plugins/easypiecharts"
+,   "plugins/toastr"
+,   "plugins/sparkline"
+,   "plugins/jquery-steps"
+,   "plugins/angular-ui-tree"
+,   "plugins/morris"
+,   "plugins/jqvmap"
+,   "plugins/ng-tags-input"
+,   "plugins/angular-loading-bar"
+
+    // Pages
+,   "global/var-pages"
+,   "pages/dashboard"
+,   "pages/pages"
+,   "pages/err"
+,   "pages/lock-screen"
+,   "pages/tasks"
+,   "pages/auth"
+,   "pages/profile"
+,   "pages/ui"
+,   "pages/invoice"
+,   "pages/demo"
+
+    // sections
+,   "sections/layouts"
+,   "sections/shared"
+,   "sections/nav"
+,   "sections/nav-off-canvas"
+,   "sections/nav-horizontal"
+,   "sections/nav-min"
+,   "sections/header"
+,   "sections/body"
+;
+
+
+
+.logo a:link {
+    text-decoration: none;
+}
+
+.logo a:visited {
+    text-decoration: none;
+}
+
+.form-horizontal .checkbox {
+  padding-top: 0;
+}
+
+#dropdown-menu h2 {
+    padding: 14px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+#dropdown-menu .sample {
+    width: 200px;
+}
+#dropdown-menu .form-control-wrapper {
+    margin: 30px 0;
+}
+
+
+
+.kinetic-slider-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  z-index: 1;
+  overflow: hidden;
+
+  @media all and (max-width: 1000px) {
+    height: 310px;
+  }
+  @media all and (max-width: 600px) {
+    height: 210px;
+  }
+
+}
+
+.kinetic-slider-content {
+  position: absolute;
+  z-index: 1;         // note: make sure you set a z-index
+  width: 100%;
+
+  a {
+    position: relative;
+    display: block;
+    float: left;
+    width: 390px;
+    height: 390px;
+    padding: 5px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+    }
+
+
+    @media all and (max-width: 1000px) {
+      width: 300px;
+      height: 300px;
+    }
+    @media all and (max-width: 600px) {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+
+.floatingbutton{
+  position: absolute;
+  bottom: -50px;
+  right: 10px;
+}
+.backButton{
+  margin-top: 145px;
+  margin-left: 50px;
+  z-index: 5;
+}
+
+// hide multiselect label
+.ui-select-match-item.select2-search-choice{
+  display: none;
+}
+
+.ui-datepicker table th .active span, .ui-datepicker table td .active span{
+  color:rgba(0,0,0,.84);
+}

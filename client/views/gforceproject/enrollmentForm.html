@@ -1,0 +1,291 @@
+<div class="well page ">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h3>Enrollment Form</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row paddingtop20">
+        <div class="col-lg-7">
+            <form class="form-horizontal" name="vm.form" ng-submit="vm.agreement()" novalidate>
+                <fieldset>
+                    <!-- <legend>Enrollment Form</legend> -->
+
+                    <div class="form-group">
+                        <label for="inputFirstname" class="col-lg-3 control-label">First Name</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control floating-label" id="inputFirstname" placeholder="your first name"
+                                ng-model="vm.formData.firstname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastname" class="col-lg-3 control-label">Last Name</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control floating-label" id="inputLastname" placeholder="your last name"
+                                ng-model="vm.formData.lastname" required >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress" class="col-lg-3 control-label">Address</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control floating-label" id="inputAddress" placeholder="your address"
+                                ng-model="vm.formData.address" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-3 control-label">Email Address</label>
+                        <div class="col-lg-8">
+                            <input type="email" class="form-control floating-label" id="inputEmail" placeholder="your email"
+                                ng-model="vm.formData.email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCnumber" class="col-lg-3 control-label">Contact Number</label>
+                        <div class="col-lg-8">
+                            <input type="number" class="form-control floating-label" id="inputCnumber" placeholder="0912291293"
+                                ng-model="vm.formData.cnumber" ui-mask="(999) 999-9999" data-hint="number only" required >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputBirthdate" class="col-lg-3 control-label">Birthdate</label>
+                        <div class="col-lg-4" ng-controller="DatePickerCtrl1 as vm">
+                            <!-- <input type="text" class="form-control floating-label" id="inputBirthdate" placeholder=""
+                                ng-model="vm.formData.birthdate" > -->
+                            <div class="input-group ui-datepicker">
+                                <input type="text"
+                                   class="form-control"
+                                   datepicker-popup="{{vm.format}}"
+                                   ng-model="vm.dt"
+                                   is-open="vm.opened"
+                                   min="vm.minDate"
+                                   max="'1/1/14'"
+                                   datepicker-options="vm.dateOptions"
+                                   ng-required="true"
+                                   close-text="Close"
+                                   data-hint="M/d/yy"
+                                   ng-change="$parent.vm.change(vm.dt)"
+                                   required >
+                                <span class="input-group-addon" ng-click="vm.open($event)"><i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputGender" class="col-lg-3 control-label">Gender</label>
+                        <div class="col-lg-2">
+                            <div class="radio radio-primary">
+                                <label>
+                                    <input type="radio" id="inputGender.male"
+                                        ng-model="vm.formData.gender" value="male">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="radio radio-primary">
+                                <label>
+                                    <input type="radio"  id="inputGender.female"
+                                        ng-model="vm.formData.gender" value="female" >
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">
+                        Glamping
+                        </label>
+                        <div class="col-lg-5">
+                            <div class="radio radio-primary">
+                                <label>
+                                    <input type="radio" id="inputGlamping.yes"
+                                        ng-model="vm.formData.glamping" value="yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="radio radio-primary">
+                                <label>
+                                    <input type="radio"  id="inputGlamping.no"
+                                        ng-model="vm.formData.glamping" value="no" >
+                                    No
+                                </label>
+                            </div>
+                            <label class="glamping">
+                                <a href="" ng-click="vm.glampingModal()">learn more about glamping</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+                            <!-- <button type="submit" class="btn btn-primary btn-raised" data-ng-disabled="!vm.canSubmit()">Enroll</button> -->
+                            <button type="submit" class="btn btn-primary btn-raised">Enroll</button>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:-10px;">
+                        <div class="col-lg-9">
+                        <div class="callout callout-info">
+                            <p>Enroll button will be active only when all fields are valid.</p>
+                        </div>
+                    </div>
+
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-lg-5">
+         <button class="btn btn-default" data-ng-click="vm.showClassDropDown()">{{vm.buttonText}}</button>
+            <section class="table-flip-scroll " data-ng-show="vm.classDropDown">
+                <table class="table table-bordered table-striped cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>Batch 1</th>
+                            <th>Batch 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ui-select multiple  required ng-model="vm.formData.danceClass" ng-disabled="disabled" style="width: 230px;" on-select="vm.classOnSelect($item)">
+                                    <ui-select-match placeholder="add Class ...">{{$item.title }}</ui-select-match>
+                                    <ui-select-choices group-by="class.batch" repeat="class in vm.batch1 | filter:$select.search">
+                                        {{class.title}} <!-- - {{class.batch}} -->
+                                    </ui-select-choices>
+                                </ui-select>
+                            </td>
+                            <td>
+                                <ui-select multiple  required ng-model="vm.formData.danceClass" ng-disabled="disabled" style="width: 230px;" on-select="vm.classOnSelect($item)">
+                                    <ui-select-match placeholder="add Class ...">{{$item.title }}</ui-select-match>
+                                    <ui-select-choices group-by="class.batch" repeat="class in vm.batch2 | filter:$select.search">
+                                        {{class.title}} - {{class.batch}}
+                                    </ui-select-choices>
+                                </ui-select>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="table-flip-scroll">
+                <table class="table table-bordered table-striped cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>Name</th>
+                            <th class="numeric">Price</th>
+                            <th class="numeric">
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="class in vm.formData.danceClass" ng-init="vm.total = vm.total + class.price" id="{{$index}}">
+                            <td>{{class.title}}</td>
+                            <td class="numeric">{{class.price}}</td>
+                            <td>
+                            <p>
+                                <a href="javascript:;" class="btn-icon btn-icon-sm bg-danger" data-ng-click="vm.removeClass(class.id)">
+                                <i class="fa fa-close"></i></a>
+                            </p>
+                            </td>
+                        </tr>
+
+
+                        <tr ng-show="vm.formData.glamping">
+                            <td>Glamping</td>
+                            <td class="numeric">2,850</td>
+                            <td>
+                                <a href="javascript:;" class="btn-icon btn-icon-sm bg-danger"><i class="fa fa-close"></i></a>
+                            </td>
+                        </tr>
+                       <!--  <tr>
+                            <td>{{vm.formData.danceClass.selected.title}}</td>
+                            <td class="numeric">8,500</td>
+                            <td>
+                            <p>
+                                <a href="javascript:;" class="btn-icon btn-icon-sm bg-danger"><i class="fa fa-close"></i></a>
+                            </p>
+                            </td>
+                        </tr> -->
+                       <!--  <tr>
+                            <td colspan="3">
+                                <ui-select ng-model="vm.formData.danceClass.selected" theme="selectize" ng-disabled="disabled" style="width: 300px;">
+                                    <ui-select-match placeholder="Select or search a Dance Class in the list...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="danceClass in vm.danceClassList | filter: $select.search">
+                                          <span ng-bind-html="danceClass.title | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                </ui-select>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </section>
+            <br>
+            <p data-ng-if="vm.formData.glamping" ng-init="vm.total = vm.total + 2850"></p>
+            <h5 class="text-right" >Total : Php {{vm.total}}</h5>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="termsAndCondition.html">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Terms and Condition</h3>
+            </div>
+            <div class="modal-body clearfix">
+
+                <h4>Lorem Ipsum{{vm.title}}</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor
+                </p>
+                <h1 class="text-hide">Custom heading</h1>
+                <h4>Duis aute</h4>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor
+                </p>
+                <h1 class="text-hide">Custom heading</h1>
+                <h4>Excepteur</h4>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="vmt.ok()">I Agree</button>
+                <button class="btn btn-warning" ng-click="vmt.dismiss()">Cancel</button>
+            </div>
+</script>
+
+
+<script type="text/ng-template" id="glampingModal.html">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Glamping</h3>
+            </div>
+            <div class="modal-body clearfix">
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <p>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="glampingModal.dismiss()">Okay</button>
+            </div>
+</script>
+
+
+<div >
+
+
+<script>
+    $(function() {
+        $.material.init();
+    });
+</script>
+
+

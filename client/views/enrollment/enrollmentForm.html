@@ -1,0 +1,213 @@
+
+<div class="well page ">
+    <div class="row">
+        <div class="col-lg-12">
+           <div class="page-header">
+                <h3>Enrollment Form</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row paddingtop20">
+        <div class="col-lg-12">
+             <form class="form-horizontal" name="vm.form" ng-submit="vm.agreement()" novalidate>
+                <fieldset>
+                    <!-- <legend>Enrollment Form</legend> -->
+
+                    <div class="form-group">
+                        <label for="inputFirstname" class="col-lg-2 control-label">First Name</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control floating-label" id="inputFirstname" placeholder="your first name"
+                                ng-model="vm.formData.firstname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastname" class="col-lg-2 control-label">Last Name</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control floating-label" id="inputLastname" placeholder="your last name"
+                                ng-model="vm.formData.lastname" required >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress" class="col-lg-2 control-label">Address</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control floating-label" id="inputAddress" placeholder="your address"
+                                ng-model="vm.formData.address" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">Email Address</label>
+                        <div class="col-lg-5">
+                            <input type="email" class="form-control floating-label" id="inputEmail" placeholder="your email"
+                                ng-model="vm.formData.email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCnumber" class="col-lg-2 control-label">Contact Number</label>
+                        <div class="col-lg-5">
+                            <input type="number" class="form-control floating-label" id="inputCnumber" placeholder="0912291293"
+                                ng-model="vm.formData.cnumber" ui-mask="(999) 999-9999" data-hint="number only" required >
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="inputBirthdate" class="col-lg-2 control-label">Birthdate</label>
+                        <div class="col-lg-2" ng-controller="DatePickerCtrl as vm">
+                            <!-- <input type="text" class="form-control floating-label" id="inputBirthdate" placeholder=""
+                                ng-model="vm.formData.birthdate" > -->
+                            <div class="input-group ui-datepicker">
+                                <input type="text"
+                                   class="form-control"
+                                   datepicker-popup="{{vm.format}}"
+                                   ng-model="vm.dt"
+                                   is-open="vm.opened"
+                                   min="vm.minDate"
+                                   max="'1/1/15'"
+                                   datepicker-options="vm.dateOptions"
+                                   ng-required="true"
+                                   close-text="Close"
+                                   data-hint="M/d/yy"
+                                   ng-change="$parent.vm.change(vm.dt)"
+                                   required >
+                                <span class="input-group-addon" ng-click="vm.open($event)"><i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputGender" class="col-lg-2 control-label">Gender</label>
+                        <div class="col-lg-10">
+                            <div class="radio radio-primary">
+                                <label>
+                                    <input type="radio" id="inputGender.male"
+                                        ng-model="vm.formData.gender" value="male">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="radio radio-primary">
+                                <label>
+                                    <input type="radio"  id="inputGender.female"
+                                        ng-model="vm.formData.gender" value="female" >
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label  class="col-lg-2 control-label">
+                            Batch
+                        </label>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="vm.formData.batch1" ng-change="vm.selectBatch1()"> Batch 1 (May 4 - 8, 2015)
+
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="vm.formData.batch2" ng-change="vm.selectBatch2()"> Batch 2 (May 11 - 15, 2015)
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="vm.formData.batch1 || vm.formData.batch2">
+                        <label for="select" class="col-lg-2 control-label">Select Class</label>
+                        <div class="col-lg-6">
+                            <ui-select multiple  required ng-model="vm.formData.danceClass" ng-disabled="disabled" style="width: 600px;" >
+                                <ui-select-match placeholder="Select Class ...">{{$item.title }}</ui-select-match>
+                                <ui-select-choices group-by="class.batch" repeat="class in vm.danceClassList | filter:$select.search">
+                                  {{class.title}} - {{class.batch}}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">
+                        Camp
+                        </label>
+                        <div class="col-lg-3">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="vm.formData.camp"> Yes
+                                </label>
+                                <label>
+                                    <a ui-sref="camp">learn more about camp</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-raised" data-ng-disabled="!vm.canSubmit()">Enroll</button>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                    <div class="col-lg-6">
+                        <div class="callout callout-info">
+                            <p>Enroll button will be active only when all fields are valid.</p>
+                        </div>
+                    </div>
+
+                    </div>
+                </fieldset>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="well page">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>{{vm.formData | json : spacing}}
+            </h4>
+            <p>{{vm.dt}}</p>
+        </div>
+    </div>
+</div> -->
+
+
+ <script type="text/ng-template" id="termsAndCondition.html">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Terms and Condition</h3>
+            </div>
+            <div class="modal-body">
+
+                <h4>Lorem Ipsum{{vm.title}}</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor
+                </p>
+                <h1 class="text-hide">Custom heading</h1>
+                <h4>Duis aute</h4>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor
+                </p>
+                <h1 class="text-hide">Custom heading</h1>
+                <h4>Excepteur</h4>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate elit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="vmt.ok()">I Agree</button>
+                <button class="btn btn-warning" ng-click="vmt.dismiss()">Cancel</button>
+            </div>
+            </script>
+<div >
+
+
+<script>
+    $(function() {
+        $.material.init();
+    });
+</script>
+
+
