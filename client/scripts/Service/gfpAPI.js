@@ -3,10 +3,10 @@
 
     angular
         .module('app.gfpAPI',[])
-        .factory('gfdAPI', gfdAPI);
+        .factory('gfpAPI', gfpAPI);
 
     /* @ngInject */
-    function gfdAPI(Restangular) {
+    function gfpAPI(Restangular) {
         var service = {
             getDanceClasses: getDanceClasses,
             getDanceClass: getDanceClass,

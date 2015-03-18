@@ -134,8 +134,8 @@
             </form>
         </div>
         <div class="col-lg-5">
-         <button class="btn btn-default" data-ng-click="vm.showClassDropDown()">{{vm.buttonText}}</button>
-            <section class="table-flip-scroll " data-ng-show="vm.classDropDown">
+         <!-- <button class="btn btn-default" data-ng-click="vm.showClassDropDown()">Add More Class</button> -->
+            <section class="table-flip-scroll ">
                 <table class="table table-bordered table-striped cf">
                     <thead class="cf">
                         <tr>
@@ -149,7 +149,7 @@
                                 <ui-select multiple  required ng-model="vm.formData.danceClass" ng-disabled="disabled" style="width: 230px;" on-select="vm.classOnSelect($item)">
                                     <ui-select-match placeholder="add Class ...">{{$item.title }}</ui-select-match>
                                     <ui-select-choices group-by="class.batch" repeat="class in vm.batch1 | filter:$select.search">
-                                        {{class.title}} <!-- - {{class.batch}} -->
+                                        {{class.dancestyle.name}} with {{class.teacher.name}}
                                     </ui-select-choices>
                                 </ui-select>
                             </td>
@@ -157,7 +157,7 @@
                                 <ui-select multiple  required ng-model="vm.formData.danceClass" ng-disabled="disabled" style="width: 230px;" on-select="vm.classOnSelect($item)">
                                     <ui-select-match placeholder="add Class ...">{{$item.title }}</ui-select-match>
                                     <ui-select-choices group-by="class.batch" repeat="class in vm.batch2 | filter:$select.search">
-                                        {{class.title}} - {{class.batch}}
+                                        {{class.dancestyle.name}} with {{class.teacher.name}}
                                     </ui-select-choices>
                                 </ui-select>
                             </td>
@@ -179,9 +179,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="class in vm.formData.danceClass" ng-init="vm.total = vm.total + class.price" id="{{$index}}">
-                            <td>{{class.title}}</td>
-                            <td class="numeric">{{class.price}}</td>
+                        <tr ng-repeat="class in vm.formData.danceClass" id="{{$index}}">
+                            <td>{{class.dancestyle.name}} with {{class.teacher.name}}</td>
+                            <td class="numeric">{{class.amount}}</td>
                             <td>
                             <p>
                                 <a href="javascript:;" class="btn-icon btn-icon-sm bg-danger" data-ng-click="vm.removeClass(class.id)">
@@ -221,7 +221,7 @@
                 </table>
             </section>
             <br>
-            <p data-ng-if="vm.formData.glamping" ng-init="vm.total = vm.total + 2850"></p>
+            <p data-ng-if="vm.formData.glamping"></p>
             <h5 class="text-right" >Total : Php {{vm.total}}</h5>
         </div>
     </div>

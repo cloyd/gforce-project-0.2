@@ -5,9 +5,9 @@
         .module('app.gfdanceClass',[])
         .controller('GFDanceClassesCtrl', GFDanceClassesCtrl);
 
-        GFDanceClassesCtrl.$inject = ['$state','$stateParams','$modal','$log','localStorageService','gfdAPI','danceStyles','danceClasses'];
+        GFDanceClassesCtrl.$inject = ['$state','$stateParams','$modal','$log','localStorageService','gfpAPI','danceClasses'];
     /* @ngInject */
-    function GFDanceClassesCtrl($state,$stateParams,$modal,$log,localStorageService,gfdAPI,danceStyles,danceClasses) {
+    function GFDanceClassesCtrl($state,$stateParams,$modal,$log,localStorageService,gfpAPI,danceClasses) {
         /*jshint validthis: true */
         var vm = this;
         vm.title = 'GFDanceClassesCtrl';

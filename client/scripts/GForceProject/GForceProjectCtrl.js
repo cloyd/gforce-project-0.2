@@ -4,9 +4,9 @@
     angular
         .module('app.gforceproject',[])
         .controller('GForceProjectCtrl', GForceProjectCtrl);
-        GForceProjectCtrl.$inject = ['$state','$scope','$log','$modal','filterFilter','$filter','Restangular','localStorageService','danceClasses'];
+        GForceProjectCtrl.$inject = ['$state','$scope','$log','$modal','filterFilter','$filter','Restangular','localStorageService','danceClasses','formData'];
     /* @ngInject */
-    function GForceProjectCtrl($state,$scope,$log,$modal,filterFilter,$filter,Restangular,localStorageService,danceClasses) {
+    function GForceProjectCtrl($state,$scope,$log,$modal,filterFilter,$filter,Restangular,localStorageService,danceClasses,formData) {
         /*jshint validthis: true */
         var vm = this;
         vm.title = 'GForceProjectCtrl';
@@ -17,7 +17,6 @@
         vm.buttonText = 'Add more Class';
 
         vm.danceClasses = danceClasses;
-        // vm.danceClasses;
         // vm.selectedClassID = $stateParams.id;
 
         vm.danceClassList = [
@@ -30,19 +29,7 @@
             {id:7,title:"Hip-Hop with Dayrit",batch:"Manila Batch 2",date:"April 13 – 17, 2015",time:"12:00 NN – 2:00 PM",video:"s1ZcQLOi96A",photo:"dayrit",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",price:8500}
         ];
 
-        vm.formData = {
-            firstname:'',
-            lastname:'',
-            address:'',
-            email:'',
-            cnumber:'',
-            birthdate:'',
-            danceClass:[
-
-            ],
-            glamping:false,
-            gender:'male',
-        };
+        vm.formData = formData;
 
         original = angular.copy(vm.formData);
         vm.originalDanceClassList = vm.danceClassList;
@@ -58,26 +45,17 @@
         vm.showClassDropDown = showClassDropDown;
 
 
-        //search value
 
 
-        //filter the array
-        // var foundItem = $filter('filter')(vm.danceClassList, { id: vm.selectedClassID  }, true)[0];
-
-        // //get the index
-        // var index = vm.danceClassList.indexOf(foundItem );
-
-        // console.log("selectedClass",foundItem);
-        // console.log("index of selected Class", index);
-
-        vm.batch1 =  $filter('filter')(vm.danceClassList, { batch: 'Manila Batch 1'});
-        vm.batch2 =  $filter('filter')(vm.danceClassList, { batch: 'Manila Batch 2'});
 
 
         activate();
 
         function activate() {
             getLocalStorage();
+            vm.batch1 =  $filter('filter')(vm.danceClasses, { category: 'Manila Batch 1'});
+            vm.batch2 =  $filter('filter')(vm.danceClasses, { category: 'Manila Batch 2'});
+            console.log("FormData",vm.formData);
         }
         function cancel(){
             $state.reload();
@@ -91,7 +69,6 @@
             });
 
             modalInstance.result.then((function(selectedItem) {
-                // console.log("data",vm.formData);
                 $state.go('gforceproject-webcam');
             }), function() {
               $log.info("Modal dismissed at: " + new Date());
@@ -116,18 +93,30 @@
         function removeClass(id){
             console.log("Remove Class",id);
             localStorageService.remove(id);
+            var getOne = getOnefunction(id);
+            console.log("get ONe",getOne);
             var foundItem2 = $filter('filter')(vm.formData.danceClass, { id: id }, true)[0];
             //get the index
             var index2 = vm.formData.danceClass.indexOf(foundItem2 );
             // var index = getIndex(id);
-            vm.formData.danceClass.splice(index2,1);
-            // fix this shitty code
-            if(vm.total == 0){
-                console.log("total is equal to zero");
-            }else{
-                vm.total = vm.total - 8500;
-            }
+            console.log("before vm.formData.danceClass",vm.formData.danceClass);
 
+            vm.formData.danceClass.splice(index2,1);
+            console.log(" after vm.formData.danceClass",vm.formData.danceClass);
+            // fix this shitty code
+            // if(vm.total == 0){
+            //     console.log("total is equal to zero");
+            // }else{
+            //     vm.total = vm.total - 8500;
+            // }
+
+        }
+        function getOnefunction(id){
+            var danceStyleWithId;
+            return danceStyleWithId = _.find(vm.danceClasses, function(danceStyle)
+            {
+                return danceStyle.id === id;
+            });
         }
         function getLocalStorage(){
             vm.localValues = localStorageService.keys();
@@ -135,29 +124,31 @@
             var cvalue,index1;
             for (var i = 0; i < lsLength; i++) {
                 console.log("local Value",vm.localValues[i]);
-                cvalue = parseInt(vm.localValues[i], 10);
-                index1 = getIndex(cvalue);
+                // cvalue = parseInt(vm.localValues[i], 10);
+                index1 = getIndex(vm.localValues[i]);
                 // add selected class to array
-                vm.formData.danceClass.push(vm.danceClassList[index1]);
+                vm.formData.danceClass.push(vm.danceClasses[index1]);
             };
-
         }
         function getIndex(value){
-            var foundItem1 = $filter('filter')(vm.danceClassList, { id: value }, true)[0];
+            var foundItem1 = $filter('filter')(vm.danceClasses, { id: value }, true)[0];
             //get the index
-            var index1 = vm.danceClassList.indexOf(foundItem1 );
+            var index1 = vm.danceClasses.indexOf(foundItem1 );
             return index1;
         }
         function getlstorage(){
             return vm.lstorage = localStorageService.keys();
         }
         function classOnSelect(item){
+            console.log("class ON select",item);
             var classId = item.id;
+            console.log("Class ID",classId);
             localStorageService.set(classId);
-            getlstorage();
+            console.log("vm.formData.danceClass",vm.formData.danceClass);
         }
         function showClassDropDown (){
             vm.classDropDown = true;
+            console.log("batch 1",vm.batch1);
         }
     }
 })();

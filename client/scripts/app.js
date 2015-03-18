@@ -19,6 +19,7 @@
 
     // uiSelectConfig.resetSearchInput = true;
     RestangularProvider.setBaseUrl('http://gforceproject-api-0.2:8888/public/api/v1/');
+    RestangularProvider.setDefaultHttpFields({cache: true});
      RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
           var extractedData;
           // .. to look for getList operations
@@ -46,10 +47,26 @@
           controller:"GForceProjectCtrl",
           controllerAs:"vm",
           resolve:{
-            danceClasses: function(){
-              return gfdApi.getDanceClasses().getList()
+            danceClasses: function(gfpAPI){
+              return gfpAPI.getDanceClasses().getList()
+            },
+            formData: function(){
+              return {
+                  firstname:'John',
+                  lastname:'Doe',
+                  address:'',
+                  email:'',
+                  cnumber:'',
+                  birthdate:'',
+                  danceClass:[
+
+                  ],
+                  glamping:false,
+                  gender:'male',
+              }
             }
           }
+
       })
       .state('gforceproject-danceClasses',{
         url: "/gforceproject/danceClasses",
@@ -57,8 +74,8 @@
         controller:"GFDanceClassesCtrl",
         controllerAs:"vm",
         resolve:{
-          danceClasses:function(gfdAPI){
-            return gfdAPI.getDanceClasses().getList()
+          danceClasses:function(gfpAPI){
+            return gfpAPI.getDanceClasses().getList()
           }
         }
       })
